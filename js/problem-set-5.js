@@ -32,16 +32,16 @@ function mario() {
   } while (height < 1 || height > 23);
   height = parseInt(height);
 
-  //
-  // switch (height){
-  //   case 1:
-  //     op.innerHTML = "##";
-  //     break;
-  //   case 2:
-  //     op.innerHTML = "##<br/>###";
-  //     break;
-  // }
-  //
+
+  switch (height){
+    case 1:
+      op.innerHTML = "##<br>";
+      break;
+    case 2:
+      op.innerHTML = "&nbsp;##<br/>###<br/>";
+      break;
+  }
+
   // for (let i=0; i<height; i++){
   //   let row;
   //   for (let i2=0; i2<(height-1); i2++){}
