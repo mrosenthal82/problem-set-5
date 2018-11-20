@@ -26,7 +26,26 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  
+  let op = document.getElementById("mario-easy-output");
+  do {
+    height = prompt("How tall would you like your tower?");
+  } while (height < 1 || height > 23);
+  height = parseInt(height);
+
+  //
+  // switch (height){
+  //   case 1:
+  //     op.innerHTML = "##";
+  //     break;
+  //   case 2:
+  //     op.innerHTML = "##<br/>###";
+  //     break;
+  // }
+  //
+  // for (let i=0; i<height; i++){
+  //   let row;
+  //   for (let i2=0; i2<(height-1); i2++){}
+  // }
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
