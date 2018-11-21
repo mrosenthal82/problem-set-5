@@ -32,20 +32,19 @@ function mario() {
   } while (height < 1 || height > 23);
   height = parseInt(height);
 
-
-  switch (height){
-    case 1:
-      op.innerHTML = "##<br>";
-      break;
-    case 2:
-      op.innerHTML = "&nbsp;##<br/>###<br/>";
-      break;
+  let combined = "";
+  for (let i=0; i<height; i++){
+    let row = "";
+    for (let i2=0; i2<(height-i); i2++){
+      row = row+"&nbsp;&nbsp;";
+    }
+    row = row+"#";
+    for (let i3=0; i3<(i+1); i3++){
+      row = row+"#";
+    }
+    combined = combined+row+"<br/>";
   }
-
-  // for (let i=0; i<height; i++){
-  //   let row;
-  //   for (let i2=0; i2<(height-1); i2++){}
-  // }
+  op.innerHTML = combined;
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -80,7 +79,30 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+  let op = document.getElementById("mario-hard-output");
+  do {
+    height = prompt("How tall would you like your tower?");
+  } while (height < 1 || height > 23);
+  height = parseInt(height);
+
+  let combined = "";
+  for (let i=0; i<height; i++){
+    let row = "";
+    for (let i2=0; i2<(height-i); i2++){
+      row = row+"&nbsp;&nbsp;";
+    }
+    row = row+"#";
+    for (let i3=0; i3<(i+1); i3++){
+      row = row+"#";
+    }
+    row = row+"&nbsp;&nbsp;#";
+    for (let i4=0; i4<(i+1); i4++){
+      row = row+"#";
+    }
+
+    combined = combined+row+"<br/>";
+  }
+  op.innerHTML = combined;
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
