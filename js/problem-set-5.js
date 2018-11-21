@@ -30,7 +30,6 @@ function mario() {
   do {
     height = prompt("How tall would you like your tower?");
   } while (height < 1 || height > 23);
-  height = parseInt(height);
 
   let combined = "";
   for (let i=0; i<height; i++){
@@ -83,7 +82,6 @@ function marioAgain() {
   do {
     height = prompt("How tall would you like your tower?");
   } while (height < 1 || height > 23);
-  height = parseInt(height);
 
   let combined = "";
   for (let i=0; i<height; i++){
