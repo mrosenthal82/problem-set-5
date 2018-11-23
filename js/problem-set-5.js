@@ -166,12 +166,12 @@ function credit() {
 
   for (let i = cardInt.length - 1; i>=0; i--){
     let digitRetrieve = card.charAt(i);
-    digit = parseInt(cDigit, 10);
+    digit = parseInt(digitRetrieve, 10);
 
     if (even) {
       digit = digit*2;
     }
-    luhnTotal= luhnTotal+digit;
+    luhnTotal = luhnTotal+digit;
     even = !even;
   }
 
