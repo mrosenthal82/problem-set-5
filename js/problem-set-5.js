@@ -174,7 +174,7 @@ function credit() {
     luhnTotal= luhnTotal+digit;
     even = !even;
   }
-luhnTotal = luhnTotal++;
+
   if ((luhnTotal%10)!=0){
       op.innerHTML="<img src=images/invalid.png width=100% />";
   } else if (card.length == 15 && card.charAt(0)==3){
