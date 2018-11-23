@@ -157,7 +157,7 @@ function credit() {
   do {
     card = prompt("What card number would you like to check?");
   }
-  while (card.length < 13 || card.length > 16);
+  while ((card.length < 13 || card.length > 16) && /[^0-9]/.test(card));
   let cardInt = parseInt(card, 10);
 
   let luhnTotal=0;
@@ -165,7 +165,7 @@ function credit() {
   let even=false;
 
   for (let i = cardInt.length - 1; i>=0; i--){
-    let digitRetrieve = cardInt.charAt(i);
+    let digitRetrieve = card.charAt(i);
     digit = parseInt(cDigit, 10);
 
     if (even) {
@@ -184,7 +184,7 @@ luhnTotal = luhnTotal++;
         op.innerHTML="<img src=images/invalid.png width=100% />";
       }
   } else if (card.length == 16 && card.charAt(0)==5){
-      if (card.charAt(1)==1 || card.charAt(1)==2 || cardInt.charAt(1)==3 || cardInt.charAt(2)==4){
+      if (card.charAt(1)==1 || card.charAt(1)==2 || card.charAt(1)==3 || card.charAt(1)==4 || card.charAt(1)==5){
         op.innerHTML="<img src=images/mastercard.png width=100% />";
       } else {
         op.innerHTML="<img src=images/invalid.png width=100% />";
