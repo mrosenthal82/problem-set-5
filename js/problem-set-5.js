@@ -152,8 +152,53 @@ function credit() {
   //////////// DO NOT MODIFY
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
+  let op = document.getElementById("credit-output");
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+  do {
+    card = prompt("What card number would you like to check?");
+  }
+  while (card.length < 13 || card.length > 16);
+  let cardInt = parseInt(card, 10);
+
+  let luhnTotal=0;
+  let digit=0;
+  let even=false;
+
+  for (let i = cardInt.length - 1; i>=0; i--){
+    let digitRetrieve = cardInt.charAt(i);
+    digit = parseInt(cDigit, 10);
+
+    if (even) {
+      digit = digit*2;
+    }
+    luhnTotal= luhnTotal+digit;
+    even = !even;
+  }
+luhnTotal = luhnTotal++;
+  if ((luhnTotal%10)!=0){
+      op.innerHTML="<img src=images/invalid.png width=100% />";
+  } else if (card.length == 15 && card.charAt(0)==3){
+      if (card.charAt(1)==4 || card.charAt(1)==7){
+        op.innerHTML="<img src=images/amex.png width=100% />";
+      } else {
+        op.innerHTML="<img src=images/invalid.png width=100% />";
+      }
+  } else if (card.length == 16 && card.charAt(0)==5){
+      if (card.charAt(1)==1 || card.charAt(1)==2 || cardInt.charAt(1)==3 || cardInt.charAt(2)==4){
+        op.innerHTML="<img src=images/mastercard.png width=100% />";
+      } else {
+        op.innerHTML="<img src=images/invalid.png width=100% />";
+      }
+  } else if (card.length == 13 || card.length == 16){
+      if (card.charAt(0)==4){
+        op.innerHTML="<img src=images/visa.png width=100% />";
+      } else {
+        op.innerHTML="<img src=images/invalid.png width=100% />";
+      }
+  } else {
+      op.innerHTML="<img src=images/invalid.png width=100% />";
+  }
+
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
