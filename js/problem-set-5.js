@@ -28,14 +28,14 @@ function mario() {
 
   let op = document.getElementById("mario-easy-output");
   do {
-    height = prompt("How tall would you like your tower?");
+    height = Number(prompt("How tall would you like your tower?"));
   } while (height < 1 || height > 23);
 
   let combined = "";
   for (let i=0; i<height; i++){
     let row = "";
-    for (let i2=0; i2<(height-i); i2++){
-      row = row+"&nbsp;&nbsp;";
+    for (let i2=0; i2<(height-i-1); i2++){
+      row = row+"&nbsp;";
     }
     row = row+"#";
     for (let i3=0; i3<(i+1); i3++){
@@ -43,7 +43,7 @@ function mario() {
     }
     combined = combined+row+"<br/>";
   }
-  op.innerHTML = combined;
+  op.innerHTML = "<code>" + combined + "</code>";
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -80,14 +80,14 @@ function marioAgain() {
 
   let op = document.getElementById("mario-hard-output");
   do {
-    height = prompt("How tall would you like your tower?");
+    height = Number(prompt("How tall would you like your tower?"));
   } while (height < 1 || height > 23);
 
   let combined = "";
   for (let i=0; i<height; i++){
     let row = "";
-    for (let i2=0; i2<(height-i); i2++){
-      row = row+"&nbsp;&nbsp;";
+    for (let i2=0; i2<(height-i-1); i2++){
+      row = row+"&nbsp;";
     }
     row = row+"#";
     for (let i3=0; i3<(i+1); i3++){
@@ -100,7 +100,7 @@ function marioAgain() {
 
     combined = combined+row+"<br/>";
   }
-  op.innerHTML = combined;
+  op.innerHTML = "<code>" + combined + "</code>";
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -206,6 +206,9 @@ function credit() {
    *       this value, you will need to create a second variable to serve
    *       as a copy of the 'card' variable.
    */
+
+   card = Number(card);
+
 
   ///////////////////////// DO NOT MODIFY
   check('credit', card); // DO NOT MODIFY
