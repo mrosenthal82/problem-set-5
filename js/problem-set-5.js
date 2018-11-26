@@ -240,7 +240,26 @@ function credit() {
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+  goal = Math.floor(Math.random() * (1001 - 1) + 1);
+  correct = false;
+  let input;
+  let attempts = 0;
+
+  while (!correct){
+    input = Number(prompt("What is your guess?"));
+    attempts += 1;
+    if (input > goal){
+      alert ("Guess lower");
+    } else if (input < goal){
+      alert ("Guess higher");
+    } else if (input == goal){
+      alert ("Congratulations!");
+      correct = true;
+    }
+  }
+
+   let op = document.getElementById("guess-output");
+   op.innerHTML = `The number: ${goal}<br/>Your attempts: ${attempts}`;
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
