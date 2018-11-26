@@ -209,7 +209,6 @@ function credit() {
 
    card = Number(card);
 
-
   ///////////////////////// DO NOT MODIFY
   check('credit', card); // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
@@ -389,15 +388,15 @@ function gymnastics() {
      scores.push(scoreSix);
    } while (scoreSix <= 0.0 && scoreSix >= 10.0);
 
-   let high = scores[1];
-   for (let i=0; i>=6; i++){
-     if (high < scores[i+2]){
-       high = scores[i+2];
-     }
-   }
+   total = scores.reduce((a,b) => a + b, 0)
+   let l = scores.indexOf(Math.min(...scores));
+   let low = scores[l];
+   let h = scores.indexOf(Math.max(...scores));
+   let high = scores[h];
+   let avg = ((total - low - high) / 4).toFixed(2);
 
    let op = document.getElementById("gymnastics-output");
-   op.innerHTML = `Discarded: ${high}`;
+   op.innerHTML = `Discarded: ${low}, ${high}<br/>Score: ${avg}`;
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
