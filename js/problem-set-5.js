@@ -364,6 +364,41 @@ function gymnastics() {
    *       scores.push(secondScore);  // will likely be different than mine
    */
 
+   do {
+     scoreOne = Number(prompt("What is the first score?"));
+     scores.push(scoreOne);
+   } while (scoreOne <= 0.0 && scoreOne >= 10.0);
+   do {
+     scoreTwo = Number(prompt("What is the second score?"));
+     scores.push(scoreTwo);
+   } while (scoreTwo <= 0.0 && scoreTwo >= 10.0);
+   do {
+     scoreThree = Number(prompt("What is the third score?"));
+     scores.push(scoreThree);
+   } while (scoreThree <= 0.0 && scoreThree >= 10.0);
+   do {
+     scoreFour = Number(prompt("What is the fourth score?"));
+     scores.push(scoreFour);
+   } while (scoreFour <= 0.0 && scoreFour >= 10.0);
+   do {
+     scoreFive = Number(prompt("What is the fifth score?"));
+     scores.push(scoreFive);
+   } while (scoreFive <= 0.0 && scoreFive >= 10.0);
+   do {
+     scoreSix = Number(prompt("What is the sixth score?"));
+     scores.push(scoreSix);
+   } while (scoreSix <= 0.0 && scoreSix >= 10.0);
+
+   let high = scores[1];
+   for (let i=0; i>=6; i++){
+     if (high < scores[i+2]){
+       high = scores[i+2];
+     }
+   }
+
+   let op = document.getElementById("gymnastics-output");
+   op.innerHTML = `Discarded: ${high}`;
+
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
