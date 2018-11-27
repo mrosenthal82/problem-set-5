@@ -450,6 +450,59 @@ function reportCard() {
    *       grades the user enters, respectively.
    */
 
+   // Tests
+      let testComplete = false;
+      let testGrade;
+      while (!testComplete){
+        do {
+          testGrade = Number(prompt("Enter a test grade or enter -1 if all test grades have been entered."));
+        } while ((testGrade != -1 && testGrade<0) || testGrade>100);
+        if (testGrade != -1){
+          testTotal += testGrade;
+          tests++;
+        } else if (testGrade == -1){
+          testComplete=true;
+        }
+      }
+      let testAvg = (testTotal / tests).toFixed(2);
+
+    // Quizzes
+       let quizComplete = false;
+       let quizGrade;
+       while (!quizComplete){
+        do {
+          quizGrade = Number(prompt("Enter a quiz grade or enter -1 if all quiz grades have been entered."));
+        } while ((quizGrade != -1 && quizGrade<0) || quizGrade>100);
+        if (quizGrade != -1){
+          quizTotal += quizGrade;
+          quizzes++;
+        } else if (quizGrade == -1){
+          quizComplete=true;
+          }
+        }
+        let quizAvg = (quizTotal / quizzes).toFixed(2);
+
+    // Homework
+       let homeworkComplete = false;
+       let homeworkGrade;
+       while (!homeworkComplete){
+        do {
+          homeworkGrade = Number(prompt("Enter a homework grade or enter -1 if all homework grades have been entered."));
+        } while ((homeworkGrade != -1 && homeworkGrade<0) || homeworkGrade>100);
+        if (homeworkGrade != -1){
+          homeworkTotal += homeworkGrade;
+          homeworks++;
+        } else if (homeworkGrade == -1){
+          homeworkComplete=true;
+          }
+        }
+        let homeworkAvg = (homeworkTotal / homeworks).toFixed(2);
+
+      let grade = (testAvg*.6+quizAvg*.3+homeworkAvg*.1).toFixed(2);
+
+      let op = document.getElementById("report-card-output");
+      op.innerHTML = `Tests: ${testAvg}<br/>Quizzes: ${quizAvg}<br/>Homework: ${homeworkAvg}<br/>Grade: ${grade}`;
+
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY
     testTotal, ////////// DO NOT MODIFY
