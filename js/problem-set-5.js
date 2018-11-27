@@ -365,35 +365,35 @@ function gymnastics() {
 
    do {
      scoreOne = Number(prompt("What is the first score?"));
-     scores.push(scoreOne);
-   } while (scoreOne <= 0.0 && scoreOne >= 10.0);
+   } while (scoreOne < 0.0 || scoreOne > 10.0);
+   scores.push(scoreOne);
    do {
      scoreTwo = Number(prompt("What is the second score?"));
-     scores.push(scoreTwo);
-   } while (scoreTwo <= 0.0 && scoreTwo >= 10.0);
+   } while (scoreTwo < 0.0 || scoreTwo > 10.0);
+   scores.push(scoreTwo);
    do {
      scoreThree = Number(prompt("What is the third score?"));
-     scores.push(scoreThree);
-   } while (scoreThree <= 0.0 && scoreThree >= 10.0);
+   } while (scoreThree < 0.0 || scoreThree > 10.0);
+   scores.push(scoreThree);
    do {
      scoreFour = Number(prompt("What is the fourth score?"));
-     scores.push(scoreFour);
-   } while (scoreFour <= 0.0 && scoreFour >= 10.0);
+   } while (scoreFour < 0.0 || scoreFour > 10.0);
+   scores.push(scoreFour);
    do {
      scoreFive = Number(prompt("What is the fifth score?"));
-     scores.push(scoreFive);
-   } while (scoreFive <= 0.0 && scoreFive >= 10.0);
+   } while (scoreFive < 0.0 || scoreFive > 10.0);
+   scores.push(scoreFive);
    do {
      scoreSix = Number(prompt("What is the sixth score?"));
-     scores.push(scoreSix);
-   } while (scoreSix <= 0.0 && scoreSix >= 10.0);
+   } while (scoreSix < 0.0 || scoreSix > 10.0);
+   scores.push(scoreSix);
 
    total = scores.reduce((a,b) => a + b, 0)
    let l = scores.indexOf(Math.min(...scores));
    let low = scores[l];
    let h = scores.indexOf(Math.max(...scores));
    let high = scores[h];
-   let avg = ((total - low - high) / 4).toFixed(2);
+   let avg = ((total - low - high) / (scores.length-2)).toFixed(2);
 
    let op = document.getElementById("gymnastics-output");
    op.innerHTML = `Discarded: ${low}, ${high}<br/>Score: ${avg}`;
