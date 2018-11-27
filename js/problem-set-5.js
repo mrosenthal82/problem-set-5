@@ -450,12 +450,15 @@ function reportCard() {
    *       grades the user enters, respectively.
    */
 
+   let i = 1;
+
    // Tests
       let testComplete = false;
       let testGrade;
       while (!testComplete){
         do {
-          testGrade = Number(prompt("Enter a test grade or enter -1 if all test grades have been entered."));
+          testGrade = Number(prompt("Enter a test grade or enter -1 if all test grades have been entered. ("+i+")"));
+          i++;
         } while ((testGrade != -1 && testGrade<0) || testGrade>100);
         if (testGrade != -1){
           testTotal += testGrade;
@@ -467,11 +470,13 @@ function reportCard() {
       let testAvg = (testTotal / tests).toFixed(2);
 
     // Quizzes
+        i = 1;
        let quizComplete = false;
        let quizGrade;
        while (!quizComplete){
         do {
-          quizGrade = Number(prompt("Enter a quiz grade or enter -1 if all quiz grades have been entered."));
+          quizGrade = Number(prompt("Enter a quiz grade or enter -1 if all quiz grades have been entered. ("+i+")"));
+          i++;
         } while ((quizGrade != -1 && quizGrade<0) || quizGrade>100);
         if (quizGrade != -1){
           quizTotal += quizGrade;
@@ -483,11 +488,13 @@ function reportCard() {
         let quizAvg = (quizTotal / quizzes).toFixed(2);
 
     // Homework
+        i = 1;
        let homeworkComplete = false;
        let homeworkGrade;
        while (!homeworkComplete){
         do {
-          homeworkGrade = Number(prompt("Enter a homework grade or enter -1 if all homework grades have been entered."));
+          homeworkGrade = Number(prompt("Enter a homework grade or enter -1 if all homework grades have been entered. ("+i+")"));
+          i++;
         } while ((homeworkGrade != -1 && homeworkGrade<0) || homeworkGrade>100);
         if (homeworkGrade != -1){
           homeworkTotal += homeworkGrade;
