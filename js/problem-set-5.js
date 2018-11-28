@@ -158,27 +158,51 @@ function credit() {
     card = prompt("What card number would you like to check?");
   }
   while ((card.length < 13 || card.length > 16) && /[^0-9]/.test(card));
-  let cardInt = parseInt(card, 10);
+  // let cardInt = parseInt(card, 10);
+  let cardInt = Number(card);
+
+  // let mult = false;
+  // while (cardInt > 0) {
+  //   // digit = cardInt % 10;
+  //   // cardInt = floor(cardInt / 10);
+  //   if (mult) digit = digit * 2;
+  // }
 
   let luhnTotal=0;
   let digit=0;
   let even=false;
 
-  for (let i = cardInt.length - 1; i>=0; i--){
-    let digitRetrieve = card.charAt(i);
-    digit = parseInt(digitRetrieve, 10);
+  // let digitCurrent;
+  let denom = 10;
+
+  // alert(card.length);
+  for (let i2= card.length-1; i2>0; i2--){
+    // alert("loop 1");
+    denom *=10;
+  }
+
+  for (let i = card.length - 1; i>0; i--){
+    // alert("loop 2");
+    digit = Math.floor(cardInt/denom);
+    cardInt -= digit*denom;
+    denom /= 10;
 
     if (even) {
-      digit = digit*2;
+      digit *= 2;
+        if (digit>=10){
+          digit = (digit%10) + 1;
+        }
     }
     luhnTotal = luhnTotal+digit;
     even = !even;
   }
+  let luhnMod = luhnTotal%10;
 
-  if ((luhnTotal%10)!=0){
+  if (luhnMod!=0){
       op.innerHTML="<img src=images/invalid.png width=100% />";
-  } else if (card.length == 15 && card.charAt(0)==3){
-      if (card.charAt(1)==4 || card.charAt(1)==7){
+  } else if (card.length == 15 && /*card.charAt(0)==3*/Math.floor(cardInt/(card.length-1))==3){
+      // if (card.charAt(1)==4 || card.charAt(1)==7)
+      if (Math.floor(cardInt/(card.length-2))==3 || Math.floor(cardInt/(card.length-2))==7) {
         op.innerHTML="<img src=images/amex.png width=100% />";
       } else {
         op.innerHTML="<img src=images/invalid.png width=100% />";
@@ -199,6 +223,8 @@ function credit() {
       op.innerHTML="<img src=images/invalid.png width=100% />";
   }
 
+
+  // op.innerHTML+=cardInt+" "+luhnTotal+" "+luhnMod+" "+digit+" <code>"+card.length+"</code>";
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
