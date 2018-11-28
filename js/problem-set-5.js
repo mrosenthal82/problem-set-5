@@ -245,7 +245,9 @@ function guess() {
   let attempts = 0;
 
   while (!correct){
-    input = Number(prompt("What is your guess?"));
+    do {
+      input = Number(prompt(`What is your guess? (${attempts+1})`));
+    } while (input < 1 || input > 1000);
     attempts += 1;
     if (input > goal){
       alert ("Guess lower");
