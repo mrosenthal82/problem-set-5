@@ -166,13 +166,6 @@ function credit() {
   let denom = 10;
   let even=false;
 
-  // let mult = false;
-// while (cardInt > 0) {
-//   // digit = cardInt % 10;
-//   // cardInt = floor(cardInt / 10);
-//   if (mult) digit = digit * 2;
-// }
-
   for (let i = card.length; i>=0; i--){
     digit = cardInt % 10;
     cardInt = Math.floor(cardInt / 10);
@@ -368,30 +361,12 @@ function gymnastics() {
    *       scores.push(secondScore);  // will likely be different than mine
    */
 
-   do {
-     scoreOne = Number(prompt("What is the first score?"));
-   } while (scoreOne < 0.0 || scoreOne > 10.0);
-   scores.push(scoreOne);
-   do {
-     scoreTwo = Number(prompt("What is the second score?"));
-   } while (scoreTwo < 0.0 || scoreTwo > 10.0);
-   scores.push(scoreTwo);
-   do {
-     scoreThree = Number(prompt("What is the third score?"));
-   } while (scoreThree < 0.0 || scoreThree > 10.0);
-   scores.push(scoreThree);
-   do {
-     scoreFour = Number(prompt("What is the fourth score?"));
-   } while (scoreFour < 0.0 || scoreFour > 10.0);
-   scores.push(scoreFour);
-   do {
-     scoreFive = Number(prompt("What is the fifth score?"));
-   } while (scoreFive < 0.0 || scoreFive > 10.0);
-   scores.push(scoreFive);
-   do {
-     scoreSix = Number(prompt("What is the sixth score?"));
-   } while (scoreSix < 0.0 || scoreSix > 10.0);
-   scores.push(scoreSix);
+   for (let i = 0; i<=5; i++){
+     do {
+       score = Number(prompt(`What is score ${i+1}?`));
+     } while (score < 0.0 || score > 10.0);
+     scores.push(score);
+   }
 
    total = scores.reduce((a,b) => a + b, 0);
    let l = scores.indexOf(Math.min(...scores));
