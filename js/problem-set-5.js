@@ -438,8 +438,8 @@ function reportCard() {
       while (!testComplete){
         do {
           testGrade = Number(prompt("Enter a test grade or enter -1 if all test grades have been entered. ("+i+")"));
-          i++;
         } while ((testGrade != -1 && testGrade<0) || testGrade>100);
+        i++;
         if (testGrade != -1){
           testTotal += testGrade;
           tests++;
@@ -456,8 +456,8 @@ function reportCard() {
        while (!quizComplete){
         do {
           quizGrade = Number(prompt("Enter a quiz grade or enter -1 if all quiz grades have been entered. ("+i+")"));
-          i++;
         } while ((quizGrade != -1 && quizGrade<0) || quizGrade>100);
+        i++;
         if (quizGrade != -1){
           quizTotal += quizGrade;
           quizzes++;
@@ -474,8 +474,8 @@ function reportCard() {
        while (!homeworkComplete){
         do {
           homeworkGrade = Number(prompt("Enter a homework grade or enter -1 if all homework grades have been entered. ("+i+")"));
-          i++;
         } while ((homeworkGrade != -1 && homeworkGrade<0) || homeworkGrade>100);
+        i++;
         if (homeworkGrade != -1){
           homeworkTotal += homeworkGrade;
           homeworks++;
