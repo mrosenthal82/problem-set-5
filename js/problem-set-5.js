@@ -163,7 +163,7 @@ function credit() {
 
   let luhnTotal=0;
   let digit=0;
-  let denom = 1;
+  let denom = 10;
   let luhnCheck = 0;
   // let even=false;
 
@@ -178,7 +178,11 @@ function credit() {
     denom *=10;
   }
 
+  let w = cardInt-cardInt.toFixed(-15);
+  alert(w);
+
   for (let i = card.length - 1; i>0; i--){
+    // alert(digit +" "+cardInt);
     digit = Math.floor(cardInt/denom);
     cardInt -= (digit*denom);
     denom /= 10;
@@ -417,7 +421,7 @@ function gymnastics() {
    } while (scoreSix < 0.0 || scoreSix > 10.0);
    scores.push(scoreSix);
 
-   total = scores.reduce((a,b) => a + b, 0)
+   total = scores.reduce((a,b) => a + b, 0);
    let l = scores.indexOf(Math.min(...scores));
    let low = scores[l];
    let h = scores.indexOf(Math.max(...scores));
