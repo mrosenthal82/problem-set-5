@@ -164,7 +164,6 @@ function credit() {
   let luhnTotal=0;
   let digit=0;
   let denom = 10;
-  let luhnCheck = 0;
   let even=false;
 
   // let mult = false;
@@ -174,31 +173,9 @@ function credit() {
 //   if (mult) digit = digit * 2;
 // }
 
-  // let even;
-  // if (card.length%2==0){
-  //   even=true;
-  // } else if (card.length%2==1){
-  //   even=false;
-  // }
-
-  // for (let i2= card.length-1; i2>0; i2--){
-  //   denom *=10;
-  // }
-
-  // let w = cardInt-cardInt.toFixed(-15);
-  // alert(w);
-
   for (let i = card.length; i>=0; i--){
-    alert(digit +" "+cardInt+" "+luhnTotal);
-
-    // digit = Math.floor(cardInt/denom);
-    // cardInt -= (digit*denom);
-    // denom /= 10;
-
     digit = cardInt % 10;
     cardInt = Math.floor(cardInt / 10);
-
-    // luhnCheck+=digit;
 
     if (even) {
       digit *= 2;
@@ -209,32 +186,16 @@ function credit() {
     luhnTotal += digit;
     even = !even;
   }
-  // luhnTotal += ((luhnCheck*9)%10);
   let luhnMod = luhnTotal%10;
 
-  alert(luhnMod);
   if (luhnMod!=0){
-      alert("luhn fail");
       op.innerHTML="<img src=images/invalid.png width=100% />";
-  } else if (card.length == 15 && card.charAt(0)==3){
-      if (card.charAt(1)==4 || card.charAt(1)==7) {
+  } else if (card.length == 15 && card.charAt(0)==3 && (card.charAt(1)==4 || card.charAt(1)==7)){
         op.innerHTML="<img src=images/amex.png width=100% />";
-      } else {
-        op.innerHTML="<img src=images/invalid.png width=100% />";
-      }
-  } else if (card.length == 16 && card.charAt(0)==5){
-      if (card.charAt(1)==1 || card.charAt(1)==2 || card.charAt(1)==3 || card.charAt(1)==4 || card.charAt(1)==5){
+  } else if (card.length == 16 && card.charAt(0)==5 && (card.charAt(1)==1 || card.charAt(1)==2 || card.charAt(1)==3 || card.charAt(1)==4 || card.charAt(1)==5)){
         op.innerHTML="<img src=images/mastercard.png width=100% />";
-      } else {
-        alert("card fail");
-        op.innerHTML="<img src=images/invalid.png width=100% />";
-      }
-  } else if (card.length == 13 || card.length == 16){
-      if (card.charAt(0)==4){
+  } else if ((card.length == 13 || card.length == 16) && card.charAt(0)==4){
         op.innerHTML="<img src=images/visa.png width=100% />";
-      } else {
-        op.innerHTML="<img src=images/invalid.png width=100% />";
-      }
   } else {
       op.innerHTML="<img src=images/invalid.png width=100% />";
   }
