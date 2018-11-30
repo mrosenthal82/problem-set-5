@@ -26,7 +26,7 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  let op = document.getElementById("mario-easy-output");
+
   do {
     height = Number(prompt("How tall would you like your tower?"));
   } while (height < 1 || height > 23);
@@ -43,6 +43,7 @@ function mario() {
     }
     combined = combined+row+"<br/>";
   }
+  let op = document.getElementById("mario-easy-output");
   op.innerHTML = "<code>" + combined + "</code>";
 
   ////////////////////////// DO NOT MODIFY
@@ -158,51 +159,50 @@ function credit() {
     card = prompt("What card number would you like to check?");
   }
   while ((card.length < 13 || card.length > 16) && /[^0-9]/.test(card));
-  // let cardInt = parseInt(card, 10);
   let cardInt = Number(card);
-
-  // let mult = false;
-  // while (cardInt > 0) {
-  //   // digit = cardInt % 10;
-  //   // cardInt = floor(cardInt / 10);
-  //   if (mult) digit = digit * 2;
-  // }
 
   let luhnTotal=0;
   let digit=0;
-  let even=false;
+  let denom = 1;
+  let luhnCheck = 0;
+  // let even=false;
 
-  // let digitCurrent;
-  let denom = 10;
+  let even;
+  if (card.length%2==0){
+    even=true;
+  } else if (card.length%2==1){
+    even=false;
+  }
 
-  // alert(card.length);
   for (let i2= card.length-1; i2>0; i2--){
-    // alert("loop 1");
     denom *=10;
   }
 
   for (let i = card.length - 1; i>0; i--){
-    // alert("loop 2");
     digit = Math.floor(cardInt/denom);
-    cardInt -= digit*denom;
+    cardInt -= (digit*denom);
     denom /= 10;
+    // digit = Number(card.charAt(i));
+    // luhnCheck+=digit;
 
     if (even) {
       digit *= 2;
-        if (digit>=10){
-          digit = (digit%10) + 1;
-        }
     }
-    luhnTotal = luhnTotal+digit;
+    if (digit>=10){
+      digit -= 9;
+    }
+    luhnTotal += digit;
     even = !even;
   }
+  // luhnTotal += ((luhnCheck*9)%10);
   let luhnMod = luhnTotal%10;
 
+  alert(luhnMod);
   if (luhnMod!=0){
+      alert("luhn fail");
       op.innerHTML="<img src=images/invalid.png width=100% />";
-  } else if (card.length == 15 && /*card.charAt(0)==3*/Math.floor(cardInt/(card.length-1))==3){
-      // if (card.charAt(1)==4 || card.charAt(1)==7)
-      if (Math.floor(cardInt/(card.length-2))==3 || Math.floor(cardInt/(card.length-2))==7) {
+  } else if (card.length == 15 && card.charAt(0)==3){
+      if (card.charAt(1)==4 || card.charAt(1)==7) {
         op.innerHTML="<img src=images/amex.png width=100% />";
       } else {
         op.innerHTML="<img src=images/invalid.png width=100% />";
@@ -211,6 +211,7 @@ function credit() {
       if (card.charAt(1)==1 || card.charAt(1)==2 || card.charAt(1)==3 || card.charAt(1)==4 || card.charAt(1)==5){
         op.innerHTML="<img src=images/mastercard.png width=100% />";
       } else {
+        alert("card fail");
         op.innerHTML="<img src=images/invalid.png width=100% />";
       }
   } else if (card.length == 13 || card.length == 16){
@@ -265,8 +266,8 @@ function credit() {
 
 function guess() {
 
-  goal = Math.floor(Math.random() * (1001 - 1) + 1);
-  correct = false;
+  let goal = Math.floor(Math.random() * (1001 - 1) + 1);
+  let correct = false;
   let input;
   let attempts = 0;
 
