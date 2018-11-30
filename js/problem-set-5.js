@@ -165,28 +165,39 @@ function credit() {
   let digit=0;
   let denom = 10;
   let luhnCheck = 0;
-  // let even=false;
+  let even=false;
 
-  let even;
-  if (card.length%2==0){
-    even=true;
-  } else if (card.length%2==1){
-    even=false;
-  }
+  // let mult = false;
+// while (cardInt > 0) {
+//   // digit = cardInt % 10;
+//   // cardInt = floor(cardInt / 10);
+//   if (mult) digit = digit * 2;
+// }
 
-  for (let i2= card.length-1; i2>0; i2--){
-    denom *=10;
-  }
+  // let even;
+  // if (card.length%2==0){
+  //   even=true;
+  // } else if (card.length%2==1){
+  //   even=false;
+  // }
 
-  let w = cardInt-cardInt.toFixed(-15);
-  alert(w);
+  // for (let i2= card.length-1; i2>0; i2--){
+  //   denom *=10;
+  // }
 
-  for (let i = card.length - 1; i>0; i--){
-    // alert(digit +" "+cardInt);
-    digit = Math.floor(cardInt/denom);
-    cardInt -= (digit*denom);
-    denom /= 10;
-    // digit = Number(card.charAt(i));
+  // let w = cardInt-cardInt.toFixed(-15);
+  // alert(w);
+
+  for (let i = card.length; i>=0; i--){
+    alert(digit +" "+cardInt+" "+luhnTotal);
+
+    // digit = Math.floor(cardInt/denom);
+    // cardInt -= (digit*denom);
+    // denom /= 10;
+
+    digit = cardInt % 10;
+    cardInt = Math.floor(cardInt / 10);
+
     // luhnCheck+=digit;
 
     if (even) {
